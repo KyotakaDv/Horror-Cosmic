@@ -1,0 +1,16 @@
+:root {
+    --color-dark-void: #0a0a1a; /* Quase preto */
+    --color-deep-ocean: #1a2a3a; /* Azul marinho escuro */
+    --color-shadow-gray: #3a3a4a; /* Cinza chumbo */
+    --color-eldritch-purple: #5a3a6a; /* Roxo escuro misterioso */
+    --color-tainted-green: #3a4a3a; /* Verde musgo/pantano */
+    --color-ancient-parchment: #c8c0a8; /* Amarelo/bege de pergaminho */
+    --color-blood-red: #8b0000; /* Vermelho escuro para acentos */
+
+    --font-primary: 'Old Standard TT', serif; /* Fonte para o corpo do texto */
+    --font-display: 'Cinzel Decorative', cursive; /* Fonte para títulos, mais impactante */
+    --font-mono: 'Creepster', monospace; /* Para códigos ou elementos "estranhos" */
+
+    --spacing-unit: 1rem;
+    /* Outras variáveis para sombras, transições, etc. */
+}

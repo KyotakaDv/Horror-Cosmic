@@ -1,0 +1,32 @@
+.nav-toggle {
+    display: none; /* Esconde por padrão em desktop */
+    background: none;
+    border: none;
+    color: var(--color-ancient-parchment);
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    position: absolute;
+    right: var(--spacing-unit);
+    top: 50%;
+    transform: translateY(-50%);
+}
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: rgba(10, 10, 26, 0.95);
+        position: absolute;
+        top: 100%;
+        left: 0;
+        padding-top: var(--spacing-unit);
+        border-top: 1px solid var(--color-shadow-gray);
+    }
+    nav ul.active {
+        display: flex;
+    }
+}

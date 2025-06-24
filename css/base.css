@@ -1,0 +1,26 @@
+body {
+    font-family: var(--font-primary);
+    color: var(--color-ancient-parchment);
+    background-color: var(--color-dark-void);
+    margin: 0;
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita scroll horizontal indesejado */
+}
+a {
+    color: var(--color-eldritch-purple);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+a:hover {
+    color: var(--color-blood-red);
+}
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    color: var(--color-ancient-parchment);
+    text-shadow: 2px 2px 5px rgba(0,0,0,0.5); /* Sombra para profundidade */
+}
+/* Estilos para rolagem personalizados */
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: var(--color-dark-void); }
+::-webkit-scrollbar-thumb { background: var(--color-shadow-gray); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-eldritch-purple); }

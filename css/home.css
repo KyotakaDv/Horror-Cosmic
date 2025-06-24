@@ -1,0 +1,196 @@
+/* home.css */
+
+/* --- Seção de Destaque (Hero Section) --- */
+.hero-section {
+    position: relative;
+    height: 100vh; /* Altura total da viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: var(--color-ancient-parchment);
+    overflow: hidden; /* Garante que o fundo não 'vaze' */
+}
+
+/* Fundo da Seção Hero - Escolha uma imagem impactante */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Substitua 'img/background-cosmic-horror.jpg' pela sua imagem */
+    background-image: url('../img/background-cosmic-horror.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Efeito Parallax de fundo */
+    filter: brightness(0.4) grayscale(0.2); /* Escurece e dessatura levemente a imagem */
+    transform: scale(1.03); /* Pequeno zoom para evitar bordas brancas com o fixed attachment */
+    z-index: -1; /* Envia a imagem para trás do conteúdo */
+    animation: fadeInBackground 2s ease-out forwards; /* Animação de entrada */
+}
+
+/* Animação para a imagem de fundo */
+@keyframes fadeInBackground {
+    from {
+        opacity: 0;
+        filter: brightness(0.2) grayscale(0.5);
+    }
+    to {
+        opacity: 1;
+        filter: brightness(0.4) grayscale(0.2);
+    }
+}
+
+.hero-content {
+    position: relative; /* Garante que o conteúdo fique acima do fundo */
+    z-index: 1;
+    max-width: 800px;
+    padding: var(--spacing-unit) * 2;
+    background-color: rgba(0, 0, 0, 0.4); /* Fundo semi-transparente para o texto */
+    border-radius: 10px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.7);
+    animation: slideInUp 1.5s ease-out forwards; /* Animação de entrada do conteúdo */
+    opacity: 0; /* Esconde inicialmente para a animação */
+    transform: translateY(20px);
+}
+
+.hero-title {
+    font-size: 3.5rem;
+    margin-bottom: var(--spacing-unit);
+    line-height: 1.2;
+    text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+}
+
+.hero-subtitle {
+    font-size: 1.3rem;
+    margin-bottom: var(--spacing-unit) * 2;
+    opacity: 0.9;
+}
+
+/* Animação para o conteúdo da seção hero */
+@keyframes slideInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* --- Seções Gerais da Home (Ex: About, Featured, CTA) --- */
+.about-section,
+.featured-content-section,
+.cta-section {
+    padding: var(--spacing-unit) * 4 0;
+    margin-top: var(--spacing-unit) * 4; /* Espaçamento entre as seções */
+    position: relative; /* Para efeitos ou fundos específicos da seção */
+    text-align: center;
+}
+
+.section-title {
+    font-size: 2.8rem;
+    margin-bottom: var(--spacing-unit) * 2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6);
+    color: var(--color-ancient-parchment); /* Garante que o título se destaque */
+}
+
+/* --- Grid de Cards (Seção de Conteúdo em Destaque) --- */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsivo para 1 a N colunas */
+    gap: var(--spacing-unit) * 2;
+    justify-content: center;
+    margin-top: var(--spacing-unit) * 3;
+}
+
+/* Alinhamento de texto e margem para botões de ver mais */
+.text-center {
+    text-align: center;
+}
+.mt-4 {
+    margin-top: var(--spacing-unit) * 4;
+}
+
+/* --- Seção CTA (Call to Action) --- */
+.cta-section {
+    background-color: var(--color-deep-ocean);
+    border-top: 1px solid var(--color-shadow-gray);
+    border-bottom: 1px solid var(--color-shadow-gray);
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.5); /* Sombra interna para profundidade */
+    margin-top: var(--spacing-unit) * 5;
+    padding: var(--spacing-unit) * 5 0;
+}
+
+.newsletter-form {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-unit);
+    margin-top: var(--spacing-unit) * 2;
+    flex-wrap: wrap; /* Permite que os elementos quebrem a linha em telas menores */
+}
+
+.form-input {
+    padding: 0.8rem 1.2rem;
+    border: 1px solid var(--color-shadow-gray);
+    background-color: var(--color-dark-void);
+    color: var(--color-ancient-parchment);
+    border-radius: 5px;
+    width: 300px; /* Largura fixa para o input */
+    font-size: 1rem;
+    outline: none; /* Remove o contorno padrão ao focar */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-input::placeholder {
+    color: var(--color-shadow-gray);
+}
+
+.form-input:focus {
+    border-color: var(--color-eldritch-purple);
+    box-shadow: 0 0 10px rgba(90, 58, 106, 0.5);
+}
+
+
+/* --- Responsividade Específica da Home --- */
+@media (max-width: 992px) {
+    .hero-title {
+        font-size: 2.8rem;
+    }
+    .hero-subtitle {
+        font-size: 1.1rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    .form-input {
+        width: 100%; /* Input ocupa toda a largura em mobile */
+    }
+    .newsletter-form {
+        flex-direction: column; /* Botão e input empilhados em mobile */
+        align-items: center;
+    }
+    .btn-eldritch {
+        width: 100%; /* Botão ocupa toda a largura em mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-section {
+        height: 80vh; /* Diminui a altura em telas muito pequenas */
+    }
+    .hero-content {
+        padding: var(--spacing-unit);
+    }
+    .hero-title {
+        font-size: 1.8rem;
+    }
+    .section-title {
+        font-size: 2rem;
+    }
+}
