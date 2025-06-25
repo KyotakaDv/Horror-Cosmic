@@ -43,3 +43,14 @@ nav ul li a:hover {
         margin-bottom: var(--spacing-unit);
     }
 }
+
+/* Links de redes sociais */
+.social-links a i {
+    font-size: 1.5rem; /* Ajuste o tamanho do ícone */
+    color: var(--color-ancient-parchment); /* Ou outra variável de cor adequada ao seu tema escuro */
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover i {
+    color: var(--color-eldritch-purple); /* Cor no hover */
+}

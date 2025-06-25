@@ -1,3 +1,16 @@
+/* NO TOPO DO SEU base.css */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    -webkit-text-size-adjust: 100%; /* Para evitar zoom indesejado de texto em mobile */
+}
+
 body {
     font-family: var(--font-primary);
     color: var(--color-ancient-parchment);

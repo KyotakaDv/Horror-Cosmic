@@ -31,16 +31,21 @@
     left: 100%;
 }
 
+/* components.css */
+
+/* SEU CÓDIGO ANTERIOR PARA .card E SEUS SUB-ELEMENTOS DEVE SER SUBSTITUÍDO POR ESTE */
 .card {
     background-color: var(--color-deep-ocean);
     border: 1px solid var(--color-shadow-gray);
-    padding: var(--spacing-unit) * 1.5;
+    padding: var(--spacing-unit) * 1.5; /* Mantém o padding interno do card */
     margin: var(--spacing-unit);
     border-radius: 8px;
     box-shadow: 0 0 20px rgba(0,0,0,0.5);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     overflow: hidden;
     position: relative;
+    display: flex; /* ESSENCIAL: Adiciona flexbox ao card para que o wrapper e content se alinhem */
+    flex-direction: column; /* Coloca os itens em coluna */
 }
 .card:hover {
     transform: translateY(-5px);
@@ -60,7 +65,90 @@
 .card:hover::before {
     opacity: 0.7;
 }
+
+.card-image-wrapper {
+    width: calc(100% + var(--spacing-unit) * 3); /* Ajusta para compensar o padding do card */
+    margin: calc(var(--spacing-unit) * -1.5); /* Margem negativa para cobrir o padding do card */
+    margin-bottom: var(--spacing-unit); /* Espaçamento entre imagem e conteúdo */
+    overflow: hidden;
+    /* Definir uma proporção para a área da imagem para consistência */
+    /* Você pode ajustar 4 / 3 (para paisagem) ou 1 / 1 (quadrado) ou 3 / 4 (vertical) conforme preferir */
+    /* A imagem do mapa de Arkham parece mais vertical, então 3 / 4 ou 9 / 16 pode funcionar melhor */
+    aspect-ratio: 4 / 3; /* Tente com 4/3 primeiro. Se ainda esticar o mapa, tente 3/4. */
+    /* Ou se quiser uma altura fixa (mas pode cortar mais): height: 200px; */
+}
+
+.card-image {
+    display: block;
+    width: 100%;
+    height: 100%; /* ESSENCIAL: Agora a imagem ocupa 100% da altura e largura do wrapper */
+    object-fit: cover; /* ESSENCIAL: Preenche o contêiner sem esticar, cortando se necessário */
+    object-position: center; /* Centraliza a imagem dentro do wrapper */
+}
+
+/* Estilos para o conteúdo do card para alinhamento */
 .card-content {
     position: relative;
-    z-index: 1; /* Garante que o conteúdo fique acima do "border-image" */
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Permite que o conteúdo ocupe o espaço restante no card */
+    text-align: left; /* Alinha o texto à esquerda dentro do card */
+    padding-top: var(--spacing-unit); /* Espaçamento entre o topo do conteúdo e a imagem */
 }
+
+.card-title {
+    margin-top: 0; /* Remove margem superior extra se houver */
+    margin-bottom: var(--spacing-unit) / 2; /* Espaçamento entre título e descrição */
+    font-size: 1.5rem; /* Ajuste o tamanho da fonte se necessário */
+    line-height: 1.2;
+}
+
+.card-description {
+    flex-grow: 1; /* Permite que a descrição ocupe o espaço que precisa, empurrando o botão para baixo */
+    margin-bottom: var(--spacing-unit); /* Espaçamento entre descrição e botão */
+    font-size: 0.95rem; /* Ajuste o tamanho da fonte se necessário */
+    opacity: 0.8;
+}
+
+.card-link { /* Garante que a classe card-link também tenha um display block, embora agora usemos .small-card-btn */
+    display: block;
+    text-align: center;
+    margin-top: auto; /* ESSENCIAL: Empurra o link/botão para o final do card-content */
+}
+
+/*
+.card {
+    background-color: var(--color-deep-ocean);
+    border: 1px solid var(--color-shadow-gray);
+    padding: var(--spacing-unit) * 1.5;
+    margin: var(--spacing-unit);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    overflow: hidden;
+    position: relative;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 30px rgba(90, 58, 106, 0.8);
+}
+.card::before { /* Detalhe para a borda do card 
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border: 2px solid transparent;
+    border-image: linear-gradient(45deg, var(--color-eldritch-purple), var(--color-blood-red));
+    border-image-slice: 1;
+    opacity: 0.3;
+    transition: opacity 0.3s ease;
+    z-index: 0;
+}
+.card:hover::before {
+    opacity: 0.7;
+}
+.card-content {
+    position: relative;
+    z-index: 1; /* Garante que o conteúdo fique acima do "border-image" 
+}
+*/
